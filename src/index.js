@@ -35,7 +35,23 @@ app.post("/account", (req, res) => {
         statement: [],
     })
 
-    return res.status(201).send({"message": "Customer created"});
+    return res.status(201).send({
+        "message": "Customer created"
+    });
 })
+
+app.get("/statement/:cpf", (req, res) => {
+    const { cpf } = req.params;
+
+    const customer = customers.find(customer => customer.cpf === cpf);
+
+    if(!customer) {
+        return res.status(400).send({
+            "error": "Customer not found"
+        });
+    }
+
+    return res.json(customer.statement);
+});
 
 app.listen(3333);
