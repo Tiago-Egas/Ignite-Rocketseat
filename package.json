@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Tiago Egas",
-  "license": "MIT",
+  "license": "GPLv3",
   "scripts": {
     "dev": "nodemon src/index.js"
   },
