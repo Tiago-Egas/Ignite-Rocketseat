@@ -1,0 +1,16 @@
+{
+  "name": "fundamentos-nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Tiago Egas",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
