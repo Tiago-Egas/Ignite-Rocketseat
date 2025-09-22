@@ -7,12 +7,26 @@ app.use(express.json());
 
 const customers = [];
 
-/**
- * cpf - string
- * name - string
- * id - uuid
- * statement []
- */
+// Middleware
+function verifyIfExistsAccountCPF(req, res, next) {
+    const { cpf } = req.headers;
+
+    const customer = customers.find(
+        customer => customer.cpf === cpf
+    );
+
+    if(!customer) {
+        return res.status(400).send({
+            "error": "Customer not found"
+        });
+    }
+
+    req.customer = customer;
+
+    return next();
+};
+
+
 app.post("/account", (req, res) => {
     const { cpf, name } = req.body;
 
@@ -40,18 +54,31 @@ app.post("/account", (req, res) => {
     });
 })
 
-app.get("/statement/:cpf", (req, res) => {
-    const { cpf } = req.params;
+// app.use(verifyIfExistsAccountCPF);
 
-    const customer = customers.find(customer => customer.cpf === cpf);
-
-    if(!customer) {
-        return res.status(400).send({
-            "error": "Customer not found"
-        });
-    }
+app.get("/statement", verifyIfExistsAccountCPF, (req, res) => {
+    const { customer } = req;
 
     return res.json(customer.statement);
 });
+
+app.post("/deposit", verifyIfExistsAccountCPF, (req, res) => {
+    const { description, amount } = req.body;
+
+    const { customer } = req;
+
+    const statementOperation = {
+        description,
+        amount,
+        created_at: new Date(),
+        type: "credit"
+    };
+
+    customer.statement.push(statementOperation);
+
+    return res.status(201).send({
+        "message": "deposit done"
+    });
+})
 
 app.listen(3333);
