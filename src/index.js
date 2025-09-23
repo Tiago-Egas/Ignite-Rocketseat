@@ -58,11 +58,36 @@ app.post("/account", (req, res) => {
         name,
         id: id,
         statement: [],
-    })
+    });
 
     return res.status(201).send({
         "message": "Customer created"
     });
+});
+
+app.put("/account", verifyIfExistsAccountCPF,(req, res) => {
+    const { name } = req.body;
+    const { customer} = req;
+
+    customer.name = name;
+
+    return res.status(201).send({
+        "message": "Updates successful"
+    });
+});
+
+app.get("/account", verifyIfExistsAccountCPF, (req, res) => {
+    const { customer } = req;
+
+    return res.status(200).json(customer);
+});
+
+app.delete("/account", verifyIfExistsAccountCPF, (req, res) => {
+    const { customer } = req;
+
+    customers.splice(customer, 1);
+
+    return res.status(200).json(customers);
 });
 
 app.get("/statement", verifyIfExistsAccountCPF, (req, res) => {
@@ -133,29 +158,12 @@ app.post("/withdraw", verifyIfExistsAccountCPF, (req, res) => {
     })
 });
 
-app.put("/account", verifyIfExistsAccountCPF,(req, res) => {
-    const { name } = req.body;
-    const { customer} = req;
-
-    customer.name = name;
-
-    return res.status(201).send({
-        "message": "Updates successful"
-    });
-});
-
-app.get("/account", verifyIfExistsAccountCPF, (req, res) => {
+app.get("/balance", verifyIfExistsAccountCPF, (req, res) => {
     const { customer } = req;
 
-    return res.status(200).json(customer);
-});
+    const balance = getBalance(customer.statement);
 
-app.delete("/account", verifyIfExistsAccountCPF, (req, res) => {
-    const { customer } = req;
-
-    customers.splice(customer, 1);
-
-    return res.status(200).json(customers);
+    return res.json(balance);
 });
 
 app.listen(3333);
