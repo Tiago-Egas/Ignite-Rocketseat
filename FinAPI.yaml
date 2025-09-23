@@ -1,0 +1,316 @@
+type: collection.insomnia.rest/5.0
+name: Ignite - FinAPI
+meta:
+  id: wrk_7e3e02b2519a450a8496dffd4ff812bc
+  created: 1758561925210
+  modified: 1758643198988
+  description: FinAPI collection from Rocketset Igmite Course.
+collection:
+  - url: "{{ _.baseURL }}/account"
+    name: Create account
+    meta:
+      id: req_df310377d918417b9d6f4b1529e331b3
+      created: 1758561977952
+      modified: 1758636258610
+      isPrivate: false
+      description: ""
+      sortKey: -1758570975815
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"cpf": "1",
+        	"name": "tiago"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}/statement"
+    name: Statement
+    meta:
+      id: req_20152703e6ff4769b10162cb52e3c5eb
+      created: 1758570975715
+      modified: 1758636158882
+      isPrivate: false
+      description: ""
+      sortKey: -1758570975715
+    method: GET
+    parameters:
+      - id: pair_c21acd319110480bb296c399e1d1cc13
+        name: cpf
+        value: "99999999999"
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_7bfcb3dbb9ed4c3db9d3eed2a13ddf22
+      - id: pair_b894f6b9f5f94b7b9a91132a2ca96977
+        name: cpf
+        value: "1"
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}/deposit"
+    name: Deposit
+    meta:
+      id: req_bb01ae4a94df4908812e0ba3e9ba2fe6
+      created: 1758575800710
+      modified: 1758636167516
+      isPrivate: false
+      description: ""
+      sortKey: -1758570975615
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"description": "Ignite trasnfer",
+        	"amount": 3500.00
+        }
+    parameters:
+      - id: pair_e7d0fafb75e244bb827aa30bc9694cad
+        name: cpf
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_ebaa6678caac4096a3b1b0287642106e
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_b1ea8090676f42db8d55d877e93546c7
+      - id: pair_bd1bc7ba94504e9ba912d23fd8bed015
+        name: cpf
+        value: "1"
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}/withdraw"
+    name: Withdraw
+    meta:
+      id: req_61cd16cba59544178739a105c8cfd1fe
+      created: 1758576941257
+      modified: 1758636170715
+      isPrivate: false
+      description: ""
+      sortKey: -1758560393869.5
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"description": "Ignite trasnfer",
+        	"amount": 1000.00
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_ebaa6678caac4096a3b1b0287642106e
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_b1ea8090676f42db8d55d877e93546c7
+      - id: pair_bd1bc7ba94504e9ba912d23fd8bed015
+        name: cpf
+        value: "1"
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}/statement/date"
+    name: Statement by date
+    meta:
+      id: req_609a88cd797d47d9a05e0baf33a11734
+      created: 1758578134578
+      modified: 1758636165692
+      isPrivate: false
+      description: ""
+      sortKey: -1758570975665
+    method: GET
+    parameters:
+      - id: pair_19fa8a31bb3140e8ae6db8a3fdb0295c
+        name: date
+        value: 2025-09-23
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_82701af4ad0844588b9abcb6791f284a
+      - id: pair_c2a861fdafd54702b82e08274ef6e922
+        name: cpf
+        value: "1"
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}/account"
+    name: Update account
+    meta:
+      id: req_b5f40eb8b49a42c59ce4c1a3ba0c8dcf
+      created: 1758633159791
+      modified: 1758636151011
+      isPrivate: false
+      description: ""
+      sortKey: -1758570975765
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Tiago Egas"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f57721f6034b40ab8a61f8397e789a43
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_bb1eff31bf824eb58ccdd9e93c181513
+      - id: pair_9606637c72aa4a9e91dca7b94cbe77f2
+        name: cpf
+        value: "1"
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}/account"
+    name: Verify account
+    meta:
+      id: req_7ad0b9f5066240d4bde00d52393228aa
+      created: 1758633495132
+      modified: 1758636146838
+      isPrivate: false
+      description: ""
+      sortKey: -1758570975802.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_9264938da48c4230b53613443f0b7120
+      - id: pair_8503ba6def594cebb53a2da9cb26fe75
+        name: cpf
+        value: "1"
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}/account"
+    name: Delete account
+    meta:
+      id: req_e30e85a956c043ae9e78a42e7d95d26b
+      created: 1758634699065
+      modified: 1758635991561
+      isPrivate: false
+      description: ""
+      sortKey: -1758570975790
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_5452fb3d05544d489ff16aaf5436b231
+      - id: pair_6028b15223104dbf8c7f4b2b58d930ff
+        name: cpf
+        value: "3"
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}/balance"
+    name: Balance
+    meta:
+      id: req_a8fab7a765b94785b847de680805e342
+      created: 1758637028000
+      modified: 1758637073021
+      isPrivate: false
+      description: ""
+      sortKey: -1758560393769.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_b4278f94a3ef416daf32dc551154be16
+      - id: pair_03dbb42560324282bede9de2995658a1
+        name: cpf
+        value: "1"
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_b0bc78ec46ee3a0b881ca1616ceb4b08ef356e32
+    created: 1758561925215
+    modified: 1758561925215
+environments:
+  name: Base Environment
+  meta:
+    id: env_b0bc78ec46ee3a0b881ca1616ceb4b08ef356e32
+    created: 1758561925214
+    modified: 1758562116719
+    isPrivate: false
+  data:
+    baseURL: http://localhost:3333
