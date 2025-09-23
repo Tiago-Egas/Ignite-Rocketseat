@@ -56,7 +56,7 @@ app.post("/account", (req, res) => {
     customers.push({
         cpf,
         name,
-        id: uuidv4(),
+        id: id,
         statement: [],
     })
 
@@ -107,7 +107,7 @@ app.post("/deposit", verifyIfExistsAccountCPF, (req, res) => {
 });
 
 app.post("/withdraw", verifyIfExistsAccountCPF, (req, res) => {
-    const { amount } = req.body;
+    const { description, amount } = req.body;
 
     const { customer } = req;
 
@@ -148,6 +148,14 @@ app.get("/account", verifyIfExistsAccountCPF, (req, res) => {
     const { customer } = req;
 
     return res.status(200).json(customer);
+});
+
+app.delete("/account", verifyIfExistsAccountCPF, (req, res) => {
+    const { customer } = req;
+
+    customers.splice(customer, 1);
+
+    return res.status(200).json(customers);
 });
 
 app.listen(3333);
